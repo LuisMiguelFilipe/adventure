@@ -1,8 +1,12 @@
 <template>
-  <div class="d-flex quest-title alert alert-primary">
-    <span>!!</span>
-    <span>{{ quest.title }}</span>    
-  </div>
+  <router-link
+      :to="{name: 'quest', params: {id: quest.id}}"
+  >
+    <div class="d-flex align-items-center quest-title alert alert-primary">
+      <i class="bi" :class="quest.icon"></i>
+      <h1 class="ms-4">{{ quest.title }}</h1>
+    </div>
+  </router-link>
 </template>
 
 <script setup lang="ts">
@@ -15,8 +19,16 @@ defineProps<{
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .quest-title {
   height: 200px;
-};
+
+  .bi {
+    color: red;
+    font-size: 120px;
+  }
+}
+
+;
+
 </style>

@@ -4,7 +4,7 @@
       <h1>Adventure game!</h1>
     </header-component>
     <div class="row">
-      <quest-title-list />
+      <router-view />
     </div>
     <footer-component>
       <span class="text-muted">Place sticky footer content here.</span>
@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import FooterComponent from "@/components/common/FooterComponent.vue";
 import HeaderComponent from "@/components/common/HeaderComponent.vue";
-import QuestTitleList from "@/components/quest/QuestTitleList.vue";
 </script>
 
 <style lang="sass">

@@ -1,23 +1,25 @@
 <template>
-  <main class="flex-shrink-0">
-    <p>Hello</p>
-  </main>
-  <footer-component>
-    <span class="text-muted">Place sticky f12312ooter content here.</span>
-  </footer-component>
+  <div class="container-fluid vh-100">
+    <header-component>
+      <h1>Adventure game!</h1>
+    </header-component>
+    <div class="row">
+      <quest-title-list />
+    </div>
+    <footer-component>
+      <span class="text-muted">Place sticky footer content here.</span>
+    </footer-component>
+  </div>
 </template>
 
 <script setup lang="ts">
-
-import {defineProps} from "vue";
 import FooterComponent from "@/components/common/FooterComponent.vue";
-
-defineProps<{
-  msg: string;
-}>()
-
+import HeaderComponent from "@/components/common/HeaderComponent.vue";
+import QuestTitleList from "@/components/quest/QuestTitleList.vue";
 </script>
 
 <style lang="sass">
 @import "/src/styles/mainStyle.scss"
+
+
 </style>

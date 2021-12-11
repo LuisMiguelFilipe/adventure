@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import FooterComponent from "@/components/common/FooterComponent.vue";
 import HeaderComponent from "@/components/common/HeaderComponent.vue";
+
 </script>
 
 <style lang="sass">

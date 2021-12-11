@@ -1,4 +1,5 @@
 ﻿export type Icon =
     "bi-alarm" |
-    "bi-bookmark-star-fill"
+    "bi-bookmark-star-fill" |
+    "bi-plus"
 ;

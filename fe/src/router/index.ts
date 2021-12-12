@@ -24,6 +24,12 @@ const routes: RouteRecordRaw[] = [
                 component: QuestDetail,
                 props: route => ({ routeParams: { questId : route.params.id }}),
             },
+            {
+                path: 'quest/:id',
+                name: 'quest',
+                component: QuestDetail,
+                props: route => ({ routeParams: { questId : route.params.id }}),
+            },
         ],
     },
     {

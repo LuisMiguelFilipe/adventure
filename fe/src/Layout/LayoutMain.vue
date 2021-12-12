@@ -20,6 +20,4 @@ import HeaderComponent from "@/components/common/HeaderComponent.vue";
 
 <style lang="sass">
 @import "/src/styles/mainStyle.scss"
-
-
 </style>

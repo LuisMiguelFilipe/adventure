@@ -1,4 +1,5 @@
 ﻿import {QuestComment, QuestModel} from "@/biz/quest/questModel";
+import {computed} from "vue";
 
 export const quests: QuestModel[] = [
     new QuestModel("adv-1", "An amazing adventure", "bi-alarm"),
@@ -12,6 +13,11 @@ interface State {
 const state: State = {
     currentQuest: undefined
 };
+
+export const currentComments = computed(() => {
+    if (!state.currentQuest) return [];
+    return getQuest(state.currentQuest)?.comments;
+})
 
 export const getQuest = (id: string): QuestModel => {
     const q = quests.find(q => q.id === id);

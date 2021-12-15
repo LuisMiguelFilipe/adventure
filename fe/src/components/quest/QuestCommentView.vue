@@ -11,7 +11,4 @@ import {QuestComment} from "@/biz/quest/questModel";
 const p = defineProps<{
   questComment: QuestComment | undefined;
 }>();
-
-console.log('p', p);
-
 </script>

@@ -18,7 +18,7 @@
     </div>
     <div>
       <quest-comment-view
-          v-for="comment in quest.comments"
+          v-for="comment in use.currentComments.value"
           :key="comment.id"
           :quest-comment="comment"
       />

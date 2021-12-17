@@ -35,11 +35,11 @@ import QuestCommentForm from "@/components/quest/QuestCommentForm.vue";
 import {QuestComment} from "@/biz/quest/questModel";
 import QuestCommentView from "@/components/quest/QuestCommentView.vue";
 
-const props = defineProps<{
+defineProps<{
   routeParams: QuestDetailRouteParams;
 }>();
 
-const quest = use.getQuest(props.routeParams.questId);
+const quest = use.currentComments;
 const showNewComment = ref(false);
 
 const onAddCommentClicked = () => {

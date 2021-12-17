@@ -8,7 +8,7 @@
 import {defineProps} from "vue";
 import {QuestComment} from "@/biz/quest/questModel";
 
-const p = defineProps<{
+defineProps<{
   questComment: QuestComment | undefined;
 }>();
 </script>

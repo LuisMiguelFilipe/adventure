@@ -1,34 +1,14 @@
-﻿import {QuestComment, QuestModel} from "@/biz/quest/questModel";
+﻿import {QuestComment} from "@/biz/quest/questModel";
 import {computed} from "vue";
+import {useStore} from "@/store/stores";
+import {MutationTypes} from "@/store/questModule";
 
-export const quests: QuestModel[] = [
-    new QuestModel("adv-1", "An amazing adventure", "bi-alarm"),
-    new QuestModel("adv-2", "A mystery to solve", "bi-bookmark-star-fill"),
-];
+const store = useStore();
+const state = store.state.quest;
 
-interface State {
-    currentQuest: string|undefined;
-}
-
-const state: State = {
-    currentQuest: undefined
-};
-
-export const currentComments = computed(() => {
-    if (!state.currentQuest) return [];
-    return getQuest(state.currentQuest)?.comments;
-})
-
-export const getQuest = (id: string): QuestModel => {
-    const q = quests.find(q => q.id === id);
-    if (!q) throw new Error();
-    state.currentQuest = q.id;
-    return q;
-}
+export const currentComments = computed(() => state.comments);
+export const quest = computed(() => state.questInfo);
 
 export const addComment = (data: QuestComment) => {
-    if (!state.currentQuest) throw new Error();
-    debugger;
-    const q = getQuest(state.currentQuest);
-    q.comments.push(data);
+    store.commit(MutationTypes.ADD_COMMENT, data);
 }

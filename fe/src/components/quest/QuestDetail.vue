@@ -1,29 +1,35 @@
 <template>
-  <span>Quest detail for {{ quest.id }}</span>
-  <div class="d-flex justify-content-end">
-    <div v-if="!showNewComment">
-      <BaseButton
-          icon="bi-plus"
-          @click="onAddCommentClicked"
-      >
-        <span>Add comment</span>
-      </BaseButton>
-
-    </div>
-    <div v-if="showNewComment">
-      <quest-comment-form
-          :quest-comment="undefined"
-          @save="onNewQuestComment"
-      />
-    </div>
-    <div>
+  <div class="container">
+    <h1 class="col-12">
+      <span>Quest detail for {{ quest.id }}</span>
+    </h1>
+    <div class="col-12">
       <quest-comment-view
           v-for="comment in use.currentComments.value"
           :key="comment.id"
           :quest-comment="comment"
       />
     </div>
+    <div class="row">
+      <div class="col"/>
+      <div class="col-auto">
+        <BaseButton
+            v-show="!showNewComment"
+            icon="bi-plus"
+            @click="onAddCommentClicked"
+        >
+          <span>Add comment</span>
+        </BaseButton>
+        <div v-if="showNewComment">
+          <quest-comment-form
+              :quest-comment="undefined"
+              @save="onNewQuestComment"
+          />
+        </div>
+      </div>
+    </div>
   </div>
+  <!--  <div class="d-flex justify-content-end">-->
 </template>
 
 <script setup lang="ts">
@@ -32,7 +38,7 @@ import * as use from "@/biz/quest/useQuests";
 import {QuestDetailRouteParams,} from "@/router";
 import BaseButton from "@/components/base/BaseButton.vue";
 import QuestCommentForm from "@/components/quest/QuestCommentForm.vue";
-import {QuestComment} from "@/biz/quest/questModel";
+import {QuestCommentNew} from "@/biz/quest/questModel";
 import QuestCommentView from "@/components/quest/QuestCommentView.vue";
 
 defineProps<{
@@ -46,7 +52,7 @@ const onAddCommentClicked = () => {
   showNewComment.value = true;
 }
 
-const onNewQuestComment = ({data}: {data: QuestComment}) => {
+const onNewQuestComment = ({data}: { data: QuestCommentNew }) => {
   use.addComment(data);
   showNewComment.value = false;
 }

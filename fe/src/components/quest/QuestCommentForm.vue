@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <textarea :value="data.description" @input="save" rows="3" cols="20"/>
+  <div class="d">
+    <textarea v-model="data.description" rows="3" cols="20"/>
     <base-button
         @click="onSave"
     >
@@ -11,30 +11,25 @@
 
 <script setup lang="ts">
 import {defineProps, defineEmits} from "vue";
-import {QuestComment} from "@/biz/quest/questModel";
+import {QuestComment, QuestCommentNew} from "@/biz/quest/questModel";
 import clone from "lodash/clone";
 import {getGuid} from "@/utils/guid";
 import * as clock from "@/utils/clock";
 import BaseButton from "@/components/base/BaseButton.vue";
 
 const props = defineProps<{
-  questComment: QuestComment | undefined;
+  questComment: QuestComment | QuestCommentNew | undefined;
 }>();
 
 const emit = defineEmits<{
-  (e: 'save', payload: { data: QuestComment }): void
+  (e: 'save', payload: { data: QuestComment|QuestCommentNew }): void
 }>()
 
-const data: QuestComment = props.questComment
+const data: QuestComment|QuestCommentNew = props.questComment
     ? clone(props.questComment)
-    : {} as QuestComment;
+    : {} as QuestCommentNew;
 
 const onSave = () => {
-  if (!data.id) {
-    data.id = getGuid();
-    data.user = "luis";
-    data.timestamp = clock.getNow();
-  }
   emit("save", {data});
 }
 

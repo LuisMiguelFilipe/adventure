@@ -14,3 +14,7 @@ export interface QuestComment {
     user: string;
     timestamp: number;
 }
+
+export interface QuestCommentNew {
+    description: string;
+}

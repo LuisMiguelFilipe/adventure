@@ -39,7 +39,7 @@ defineProps<{
   routeParams: QuestDetailRouteParams;
 }>();
 
-const quest = use.currentComments;
+const quest = use.quest;
 const showNewComment = ref(false);
 
 const onAddCommentClicked = () => {

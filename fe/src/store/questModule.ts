@@ -78,8 +78,3 @@ export const questModule: Module<S, R> = {
     mutations,
     actions,
 }
-
-export const registerModule = (rootStore: Store<R>) => {
-    console.log('register');
-    rootStore.registerModule("quest", questModule);    
-}

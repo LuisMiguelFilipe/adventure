@@ -4,13 +4,12 @@ import { createStores } from "@/store/stores";
 
 import App from "@/App.vue";
 
-const routerInstance = createVueRouter();
-debugger;
 
 const app = createApp(App);
 
 createStores(app);
 
+const routerInstance = createVueRouter(); 
 app.use(routerInstance);
 
-app.mount("#app");
+const m = app.mount("#app");

@@ -12,19 +12,23 @@ export interface QuestState {
 type S = QuestState;
 type R = RootState;
 
-export enum GetterTypes {
-    GET_COMMENTS = "GET_COMMENTS",
+export enum G {
+    GET_COMMENTS = "quest/GET_COMMENTS",
 }
 
 export interface Getters {
-    [GetterTypes.GET_COMMENTS](state: S): QuestComment[],
+    [G.GET_COMMENTS](state: S): QuestComment[],
 }
+export interface Getters2 extends GetterTree<S,R> {
+    [G.GET_COMMENTS](state: S): QuestComment[],
+}
+
 
 export type GettersTree = GetterTree<S, R> & Getters;
 
 
 export enum MutationTypes {
-    ADD_COMMENT = "ADD_COMMENT",
+    ADD_COMMENT = "quest/ADD_COMMENT",
 }
 
 export interface Mutations {

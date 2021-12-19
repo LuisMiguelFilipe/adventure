@@ -1,7 +1,7 @@
 ﻿import {QuestComment, QuestCommentNew} from "@/biz/quest/questModel";
 import {computed} from "vue";
 import {useStore} from "@/store/stores";
-import {MutationTypes} from "@/store/questModule";
+import {MutationTypes} from "@/store/quest/types";
 import {getCurrentUser} from "@/utils/user";
 import * as clock from "@/utils/clock";
 import {getGuid} from "@/utils/guid";
@@ -20,4 +20,5 @@ export const addComment = (data: QuestCommentNew) => {
         description: data.description,
     };
     store.commit(MutationTypes.ADD_COMMENT, comment);
+    store.commit("MutationTypes.ADD_COMMENT", comment);
 }

@@ -2,6 +2,7 @@
 import {QuestModel} from "@/biz/quest/questModel";
 import * as types from "./types";
 import {RootState} from "@/store/types";
+import {GettersTree} from "./types";
 
 export const quests: QuestModel[] = [
     new QuestModel("adv-1", "An amazing adventure", "bi-alarm"),
@@ -10,8 +11,8 @@ export const quests: QuestModel[] = [
 
 type S = types.QuestState;
 type R = RootState;
+const G = types.G;
 
-const G = types.GetterTypes;
 export const getters: types.GettersTree = {
     [G.GET_COMMENTS]: state => state.comments,
 }

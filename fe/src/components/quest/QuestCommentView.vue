@@ -1,14 +1,24 @@
 <template>
-  <div>
-    <span>{{questComment.description}}</span>
+  <div class="container-fluid">
+    <div class="row text-start">
+      <span>{{ questComment.description }}</span>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <span class="fst-italic">
+          By {{ questComment.user }} <base-date :timestamp="questComment.timestamp"/>
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import {defineProps} from "vue";
 import {QuestComment} from "@/biz/quest/questModel";
+import BaseDate from "@/components/base/BaseDate.vue";
 
-const p = defineProps<{
+defineProps<{
   questComment: QuestComment | undefined;
 }>();
 </script>

@@ -1,34 +1,22 @@
-﻿import {QuestComment, QuestModel} from "@/biz/quest/questModel";
+﻿import {QuestComment, QuestCommentNew} from "@/biz/quest/questModel";
 import {computed} from "vue";
+import {getCurrentUser} from "@/utils/user";
+import * as clock from "@/utils/clock";
+import {getGuid} from "@/utils/guid";
+import {useQuestStore} from "@/store/questStore";
+import {pinia} from "@/store/stores";
 
-export const quests: QuestModel[] = [
-    new QuestModel("adv-1", "An amazing adventure", "bi-alarm"),
-    new QuestModel("adv-2", "A mystery to solve", "bi-bookmark-star-fill"),
-];
+const store = useQuestStore(pinia);
 
-interface State {
-    currentQuest: string|undefined;
-}
+export const currentComments = computed(() => store.comments);
+export const quest = computed(() => store.questInfo);
 
-const state: State = {
-    currentQuest: undefined
-};
-
-export const currentComments = computed(() => {
-    if (!state.currentQuest) return [];
-    return getQuest(state.currentQuest)?.comments;
-})
-
-export const getQuest = (id: string): QuestModel => {
-    const q = quests.find(q => q.id === id);
-    if (!q) throw new Error();
-    state.currentQuest = q.id;
-    return q;
-}
-
-export const addComment = (data: QuestComment) => {
-    if (!state.currentQuest) throw new Error();
-    debugger;
-    const q = getQuest(state.currentQuest);
-    q.comments.push(data);
+export const addComment = (data: QuestCommentNew) => {
+    const comment: QuestComment = {
+        id: getGuid(),
+        user: getCurrentUser().displayName,
+        timestamp: clock.getNow(),
+        description: data.description,
+    };
+    store.addComment(comment);
 }

@@ -1,22 +1,25 @@
-﻿import {QuestComment, QuestCommentNew} from "@/biz/quest/questModel";
-import {computed} from "vue";
-import {getCurrentUser} from "@/utils/user";
-import * as clock from "@/utils/clock";
-import {getGuid} from "@/utils/guid";
-import {useQuestStore} from "@/store/questStore";
-import {pinia} from "@/store/stores";
+﻿import {QuestModel} from "@/biz/quest/questModel";
+import {defineStore} from 'pinia'
+import {StoreType} from "@/store/stores";
 
-const store = useQuestStore(pinia);
+const quests: QuestModel[] = [
+    new QuestModel("adv-1", "An amazing adventure", "bi-alarm"),
+    new QuestModel("adv-2", "A mystery to solve", "bi-bookmark-star-fill"),
+];
 
-export const currentComments = computed(() => store.comments);
-export const quest = computed(() => store.questInfo);
-
-export const addComment = (data: QuestCommentNew) => {
-    const comment: QuestComment = {
-        id: getGuid(),
-        user: getCurrentUser().displayName,
-        timestamp: clock.getNow(),
-        description: data.description,
-    };
-    store.addComment(comment);
+export interface State {
+    quests: QuestModel[];
 }
+
+// useStore could be anything like useUser, useCart
+// the first argument is a unique id of the store across your application
+export const useQuestsStore = defineStore(StoreType.quests, {
+    state: (): State => ({
+        quests,
+    }),
+    getters: {
+        getQuests: (state):QuestModel[] => state.quests,
+    },
+});
+
+

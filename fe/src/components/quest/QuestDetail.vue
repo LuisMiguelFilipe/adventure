@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <h1 class="col-12">
-      <span>Quest detail for {{ quest.id }}</span>
+      <span>Quest detail for {{ questStore.getQuest.title }}</span>
     </h1>
     <div class="col-12">
       <quest-comment-view
-          v-for="comment in use.currentComments.value"
+          v-for="comment in questStore.getComments"
           :key="comment.id"
           :quest-comment="comment"
       />
@@ -29,23 +29,24 @@
       </div>
     </div>
   </div>
-  <!--  <div class="d-flex justify-content-end">-->
 </template>
 
 <script setup lang="ts">
 import {defineProps, ref} from "vue";
-import * as use from "@/biz/quest/useQuests";
+import { useQuestStore } from "@/biz/quest/useQuestInfo";
 import {QuestDetailRouteParams,} from "@/router";
 import BaseButton from "@/components/base/BaseButton.vue";
 import QuestCommentForm from "@/components/quest/QuestCommentForm.vue";
 import {QuestCommentNew} from "@/biz/quest/questModel";
 import QuestCommentView from "@/components/quest/QuestCommentView.vue";
 
-defineProps<{
+const props = defineProps<{
   routeParams: QuestDetailRouteParams;
 }>();
 
-const quest = use.quest;
+const questStore = useQuestStore();
+questStore.loadQuest(props.routeParams.questId);
+
 const showNewComment = ref(false);
 
 const onAddCommentClicked = () => {
@@ -53,7 +54,7 @@ const onAddCommentClicked = () => {
 }
 
 const onNewQuestComment = ({data}: { data: QuestCommentNew }) => {
-  use.addComment(data);
+  questStore.addComment(data);
   showNewComment.value = false;
 }
 

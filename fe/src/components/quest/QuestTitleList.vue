@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { quests } from "@/store/questStore";
+import { useQuestsStore } from "@/biz/quest/useQuests";
 import QuestTitle from "@/components/quest/QuestTitle.vue";
+
+const quests = useQuestsStore().quests;
 </script> 
 
-<style lang="scss">
-</style>

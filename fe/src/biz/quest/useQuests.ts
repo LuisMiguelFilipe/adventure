@@ -1,16 +1,15 @@
 ﻿import {QuestComment, QuestCommentNew} from "@/biz/quest/questModel";
 import {computed} from "vue";
-import {useStore} from "@/store/stores";
-import {MutationTypes} from "@/store/quest/types";
 import {getCurrentUser} from "@/utils/user";
 import * as clock from "@/utils/clock";
 import {getGuid} from "@/utils/guid";
+import {useQuestStore} from "@/store/questStore";
+import {pinia} from "@/store/stores";
 
-const store = useStore();
-const state = store.state.quest;
+const store = useQuestStore(pinia);
 
-export const currentComments = computed(() => state.comments);
-export const quest = computed(() => state.questInfo);
+export const currentComments = computed(() => store.comments);
+export const quest = computed(() => store.questInfo);
 
 export const addComment = (data: QuestCommentNew) => {
     const comment: QuestComment = {
@@ -19,6 +18,5 @@ export const addComment = (data: QuestCommentNew) => {
         timestamp: clock.getNow(),
         description: data.description,
     };
-    store.commit(MutationTypes.ADD_COMMENT, comment);
-    store.commit("MutationTypes.ADD_COMMENT", comment);
+    store.addComment(comment);
 }

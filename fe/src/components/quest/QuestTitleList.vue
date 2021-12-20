@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { quests } from "@/store/questModule";
+import { quests } from "@/store/questStore";
 import QuestTitle from "@/components/quest/QuestTitle.vue";
 </script> 
 

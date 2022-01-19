@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import {defineProps} from "vue";
-import {QuestComment} from "@/biz/quest/questModel";
+import {QuestComment} from "@/domain/quest/questModel";
 import BaseDate from "@/components/base/BaseDate.vue";
 
 defineProps<{

@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import {defineProps} from "vue";
-import {QuestModel} from "@/biz/quest/questModel";
+import {QuestModel} from "@/domain/quest/questModel";
 
 defineProps<{
   quest: QuestModel;

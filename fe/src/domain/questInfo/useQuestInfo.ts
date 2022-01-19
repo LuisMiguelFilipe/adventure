@@ -1,9 +1,9 @@
-﻿import {QuestComment, QuestCommentNew, QuestModel} from "@/biz/quest/questModel";
-import {defineStore, StateTree, _GettersTree} from "pinia";
+﻿import {QuestComment, QuestCommentNew, QuestModel} from "@/domain/quest/questModel";
+import {defineStore, StateTree} from "pinia";
 import {getCurrentUser} from "@/utils/user";
 import * as clock from "@/utils/clock";
 import {getGuid} from "@/utils/guid";
-import {useQuestsStore} from "@/biz/quest/useQuests";
+import {useQuestsStore} from "@/domain/quest/useQuests";
 
 export interface State extends StateTree {
     questInfo: QuestModel | undefined;

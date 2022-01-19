@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import {defineProps, defineEmits} from "vue";
-import {QuestComment, QuestCommentNew} from "@/biz/quest/questModel";
+import {QuestComment, QuestCommentNew} from "@/domain/quest/questModel";
 import clone from "lodash/clone";
 import {getGuid} from "@/utils/guid";
 import * as clock from "@/utils/clock";

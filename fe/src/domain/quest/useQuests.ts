@@ -1,4 +1,4 @@
-﻿import {QuestModel} from "@/biz/quest/questModel";
+﻿import {QuestModel} from "@/domain/quest/questModel";
 import {defineStore} from 'pinia'
 import {StoreType} from "@/store/stores";
 

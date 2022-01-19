@@ -33,11 +33,11 @@
 
 <script setup lang="ts">
 import {defineProps, ref} from "vue";
-import { useQuestStore } from "@/biz/quest/useQuestInfo";
+import { useQuestStore } from "@/domain/questInfo/useQuestInfo";
 import {QuestDetailRouteParams,} from "@/router";
 import BaseButton from "@/components/base/BaseButton.vue";
 import QuestCommentForm from "@/components/quest/QuestCommentForm.vue";
-import {QuestCommentNew} from "@/biz/quest/questModel";
+import {QuestCommentNew} from "@/domain/quest/questModel";
 import QuestCommentView from "@/components/quest/QuestCommentView.vue";
 
 const props = defineProps<{

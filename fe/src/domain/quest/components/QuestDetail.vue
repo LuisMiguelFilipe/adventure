@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <h1 class="col-12">
-      <span>Quest detail for {{ questStore.getQuest.title }}</span>
+      <span>Quest detail for {{ store.getQuest.title }}</span>
     </h1>
     <div class="col-12">
       <quest-comment-view
-          v-for="comment in questStore.getComments"
+          v-for="comment in store.getComments"
           :key="comment.id"
           :quest-comment="comment"
       />

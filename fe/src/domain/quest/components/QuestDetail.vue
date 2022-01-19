@@ -33,19 +33,19 @@
 
 <script setup lang="ts">
 import {defineProps, ref} from "vue";
-import { useQuestStore } from "@/domain/questInfo/useQuestInfo";
+import { useQuestInfoStore } from "@/domain/questInfo/useQuestInfo";
 import {QuestDetailRouteParams,} from "@/router";
-import BaseButton from "@/components/base/BaseButton.vue";
-import QuestCommentForm from "@/components/quest/QuestCommentForm.vue";
+import BaseButton from "@/shared/components/base/BaseButton.vue";
+import QuestCommentForm from "@/domain/quest/components/QuestCommentForm.vue";
 import {QuestCommentNew} from "@/domain/quest/questModel";
-import QuestCommentView from "@/components/quest/QuestCommentView.vue";
+import QuestCommentView from "@/domain/quest/components/QuestCommentView.vue";
 
 const props = defineProps<{
   routeParams: QuestDetailRouteParams;
 }>();
 
-const questStore = useQuestStore();
-questStore.loadQuest(props.routeParams.questId);
+const store = useQuestInfoStore();
+store.loadQuest(props.routeParams.questId);
 
 const showNewComment = ref(false);
 
@@ -54,7 +54,7 @@ const onAddCommentClicked = () => {
 }
 
 const onNewQuestComment = ({data}: { data: QuestCommentNew }) => {
-  questStore.addComment(data);
+  store.addComment(data);
   showNewComment.value = false;
 }
 

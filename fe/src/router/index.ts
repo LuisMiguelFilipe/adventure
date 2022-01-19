@@ -1,8 +1,8 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 import LayoutMain from "@/Layout/LayoutMain.vue";
-import QuestDetail from "@/components/quest/QuestDetail.vue";
-import QuestTitleList from "@/components/quest/QuestTitleList.vue";
-import PageNotFound from "@/components/misc/PageNotFound.vue";
+import QuestDetail from "@/domain/quest/components/QuestDetail.vue";
+import QuestTitleList from "@/domain/quest/components/QuestTitleList.vue";
+import PageNotFound from "@/shared/components/misc/PageNotFound.vue";
 
 export type RouteParams<T> = { routeParams: T};
 export interface QuestDetailRouteParams {

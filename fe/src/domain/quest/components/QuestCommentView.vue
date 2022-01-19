@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import {defineProps} from "vue";
 import {QuestComment} from "@/domain/quest/questModel";
-import BaseDate from "@/components/base/BaseDate.vue";
+import BaseDate from "@/shared/components/base/BaseDate.vue";
 
 defineProps<{
   questComment: QuestComment | undefined;

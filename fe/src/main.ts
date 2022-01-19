@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createVueRouter } from "@/router";
 
 import App from "@/App.vue";
-import {createStores} from "@/store/stores";
+import {createStores} from "@/app/stores";
 
 const app = createApp(App);
 

@@ -13,11 +13,11 @@
 </template>
 
 <script setup lang="ts">
-import FooterComponent from "@/components/common/FooterComponent.vue";
-import HeaderComponent from "@/components/common/HeaderComponent.vue";
+import FooterComponent from "@/shared/components/common/FooterComponent.vue";
+import HeaderComponent from "@/shared/components/common/HeaderComponent.vue";
 
 </script>
 
 <style lang="sass">
-@import "/src/styles/mainStyle.scss"
+@import "~/src/app/styles/mainStyle.scss"
 </style>

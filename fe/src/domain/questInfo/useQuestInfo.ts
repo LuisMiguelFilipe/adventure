@@ -1,16 +1,17 @@
 ﻿import {QuestComment, QuestCommentNew, QuestModel} from "@/domain/quest/questModel";
 import {defineStore, StateTree} from "pinia";
-import {getCurrentUser} from "@/utils/user";
-import * as clock from "@/utils/clock";
-import {getGuid} from "@/utils/guid";
+import {getCurrentUser} from "@/shared/utils/user";
+import * as clock from "@/shared/utils/clock";
+import {getGuid} from "@/shared/utils/guid";
 import {useQuestsStore} from "@/domain/quest/useQuests";
+import {StoreType} from "@/app/stores";
 
 export interface State extends StateTree {
     questInfo: QuestModel | undefined;
     comments: QuestComment[];
 }
 
-export const useQuestStore = defineStore('quest', {
+export const useQuestInfoStore = defineStore(StoreType.questInfo, {
     state: (): State => ({
         questInfo: undefined,
         comments: [],

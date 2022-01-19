@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { useQuestsStore } from "@/domain/quest/useQuests";
-import QuestTitle from "@/components/quest/QuestTitle.vue";
+import QuestTitle from "@/domain/quest/components/QuestTitle";
 
 const quests = useQuestsStore().quests;
 </script> 

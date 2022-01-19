@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import {defineProps} from "vue";
-import * as clock from "@/utils/clock";
+import * as clock from "@/shared/utils/clock";
 
 interface Props {
   timestamp?: number;

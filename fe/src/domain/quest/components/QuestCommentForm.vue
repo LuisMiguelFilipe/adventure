@@ -13,9 +13,7 @@
 import {defineProps, defineEmits} from "vue";
 import {QuestComment, QuestCommentNew} from "@/domain/quest/questModel";
 import clone from "lodash/clone";
-import {getGuid} from "@/utils/guid";
-import * as clock from "@/utils/clock";
-import BaseButton from "@/components/base/BaseButton.vue";
+import BaseButton from "@/shared/components/base/BaseButton.vue";
 
 const props = defineProps<{
   questComment: QuestComment | QuestCommentNew | undefined;

@@ -21,12 +21,14 @@ const routes: RouteRecordRaw[] = [
                 path: 'quest/:id',
                 name: 'quest',
                 component: QuestDetail,
-                props: (route):params.RouteParams<params.QuestDetailRouteParams> => ({ routeParams: { questId: route.params.id as string } }),
+                props: (route): params.RouteParams<params.QuestDetailRouteParams> => ({ routeParams: { questId: route.params.id as string } }),
+                meta: { toTop: true }
             },
             {
                 path: 'userProfile',
                 name: 'userProfile',
                 component: UserProfile,
+                meta: { toTop: true }
             },
         ],
     },
@@ -40,7 +42,15 @@ const routes: RouteRecordRaw[] = [
 export const createVueRouter = () => {
     const router = createRouter({
         history: createWebHistory(),
-        routes
+        routes,
+        scrollBehavior(to) {
+            //eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const scroll = {} as any;
+            if (to.meta.toTop) scroll.top = 0;
+            if (to.meta.smoothScroll) scroll.behavior = 'smooth';
+            return scroll;
+
+        },
     });
     initNavigator(router);
     return router;

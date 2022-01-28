@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid vh-100">
+    <the-navbar></the-navbar>
     <header-component>
       <h1>Adventure game!</h1>
     </header-component>
@@ -15,6 +16,7 @@
 <script setup lang="ts">
 import FooterComponent from "@/shared/components/common/FooterComponent.vue";
 import HeaderComponent from "@/shared/components/common/HeaderComponent.vue";
+import TheNavbar from "@/shared/components/common/TheNavbar.vue";
 
 </script>
 

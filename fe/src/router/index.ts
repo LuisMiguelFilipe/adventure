@@ -1,18 +1,17 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import LayoutMain from "@/Layout/LayoutMain.vue";
 import QuestDetail from "@/domain/quest/components/QuestDetail.vue";
 import QuestTitleList from "@/domain/quest/components/QuestTitleList.vue";
+import UserProfile from "@/domain/user/components/UserProfile.vue";
 import PageNotFound from "@/shared/components/misc/PageNotFound.vue";
-
-export type RouteParams<T> = { routeParams: T};
-export interface QuestDetailRouteParams {
-    questId: string;
-}
+import * as params from "@/router/routeParams";
+import { initNavigator } from "./navigator";
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
         component: LayoutMain,
+        name: 'home',
         children: [
             {
                 path: '',
@@ -22,13 +21,12 @@ const routes: RouteRecordRaw[] = [
                 path: 'quest/:id',
                 name: 'quest',
                 component: QuestDetail,
-                props: route => ({ routeParams: { questId : route.params.id }}),
+                props: (route):params.RouteParams<params.QuestDetailRouteParams> => ({ routeParams: { questId: route.params.id as string } }),
             },
             {
-                path: 'quest/:id',
-                name: 'quest',
-                component: QuestDetail,
-                props: route => ({ routeParams: { questId : route.params.id }}),
+                path: 'userProfile',
+                name: 'userProfile',
+                component: UserProfile,
             },
         ],
     },
@@ -40,8 +38,10 @@ const routes: RouteRecordRaw[] = [
 ];
 
 export const createVueRouter = () => {
-    return createRouter({
+    const router = createRouter({
         history: createWebHistory(),
         routes
     });
+    initNavigator(router);
+    return router;
 };

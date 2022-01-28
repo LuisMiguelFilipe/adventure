@@ -9,5 +9,6 @@ export const createStores = (app: App) => {
 
 export enum StoreType {
     'questInfo' = 'questInfo',
-    'quests' = 'quests'
+    'quests' = 'quests',
+    'user' = 'user',
 }

@@ -1,10 +1,11 @@
 ﻿import {QuestModel} from "@/domain/quest/questModel";
 import {defineStore} from 'pinia'
 import {StoreType} from "@/app/stores";
+import { Icon } from "@/types/icons";
 
 const quests: QuestModel[] = [
-    new QuestModel("adv-1", "An amazing adventure", "bi-alarm"),
-    new QuestModel("adv-2", "A mystery to solve", "bi-bookmark-star-fill"),
+    new QuestModel("adv-1", "An amazing adventure", Icon.alarm),
+    new QuestModel("adv-2", "A mystery to solve", Icon.bookmark),
 ];
 
 export interface State {

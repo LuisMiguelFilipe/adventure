@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import LayoutMain from "@/Layout/LayoutMain.vue";
+import LayoutInGame from '@/Layout/LayoutInGame.vue';
 import QuestDetail from "@/domain/quest/components/QuestDetail.vue";
 import QuestTitleList from "@/domain/quest/components/QuestTitleList.vue";
 import UserProfile from "@/domain/user/components/UserProfile.vue";
@@ -31,6 +32,17 @@ const routes: RouteRecordRaw[] = [
                 meta: { toTop: true }
             },
         ],
+    },
+    {
+        path: '/game',
+        component: LayoutInGame,
+        children: [
+            {
+                path: 'new/:questId',
+                name: 'newQuest',
+                component: UserProfile,
+            }
+        ]
     },
     {
         path: '/:pathMatch(.*)*',

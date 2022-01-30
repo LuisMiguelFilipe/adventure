@@ -15,7 +15,7 @@
       <div class="col-auto">
         <BaseButton
             v-show="!showNewComment"
-            icon="bi-plus"
+            :icon="Icon.plus"
             @click="onAddCommentClicked"
         >
           <span>Add comment</span>
@@ -28,17 +28,28 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col" />
+      <div class="col-auto">
+        <BaseButton class="new-quest-button" :icon="Icon.new" @click="onNewQuest">
+          <span>New Quest</span>
+        </BaseButton>
+      </div>
+      <div class="col" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import {defineProps, ref} from "vue";
 import { useQuestInfoStore } from "@/domain/questInfo/useQuestInfo";
-import {QuestDetailRouteParams,} from "@/router";
+import type {QuestDetailRouteParams} from "@/router/routeParams";
 import BaseButton from "@/shared/components/base/BaseButton.vue";
 import QuestCommentForm from "@/domain/quest/components/QuestCommentForm.vue";
 import {QuestCommentNew} from "@/domain/quest/questModel";
 import QuestCommentView from "@/domain/quest/components/QuestCommentView.vue";
+import { Icon } from "@/types/icons";
+import { useNavigator } from "@/router/navigator";
 
 const props = defineProps<{
   routeParams: QuestDetailRouteParams;
@@ -58,4 +69,15 @@ const onNewQuestComment = ({data}: { data: QuestCommentNew }) => {
   showNewComment.value = false;
 }
 
+const onNewQuest = () => {
+  const nav =  useNavigator();
+  nav.push(nav.routes.newQuest(props.routeParams.questId));
+}
+
 </script>
+
+<style lang="scss" scoped>
+.new-quest-button {
+  height: 64px;
+}
+</style>
